@@ -7,12 +7,8 @@ public class PlayerCntrl : MonoBehaviour
 	
 	private bool faceRight = true;
 	
-	//ссылка на компонент Transform объекта
-	//для определения соприкосновения с землей
 	public Transform LayerCheck;
-	//радиус определения соприкосновения с землей
 	private float Radius = 0.2f;
-	//ссылка на слой, представляющий землю
 	public LayerMask whatIsGround;
 	public LayerMask whatIsLader;
 	public AudioSource jumpSound;
@@ -43,7 +39,6 @@ public class PlayerCntrl : MonoBehaviour
     void Update()
     {
 		float moveX = Input.GetAxis ("Horizontal");
-		//rb.MovePosition (rb.position + Vector2.right * moveX * speed * 6 * Time.deltaTime);
 		rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
 		OnGround = Physics2D.OverlapCircle(LayerCheck.position, Radius, whatIsGround);
 		OnLader = Physics2D.OverlapCircle(LayerCheck.position, Radius, whatIsLader);
